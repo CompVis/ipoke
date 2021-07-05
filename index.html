@@ -1,0 +1,415 @@
+<!DOCTYPE HTML>
+<!--
+  Based on
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117339330-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-117339330-4');
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <title>
+      iPOKE: Poking a Still Image for Controlled Stochastic Video Synthesis
+    </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="landing">
+
+		<!-- Banner -->
+			<section id="banner" style="background-attachment:scroll;">
+        <h2>
+          iPOKE: Poking a Still Image for Controlled Stochastic Video Synthesis
+        </h2>
+        <p>
+        <a href="https://www.linkedin.com/in/andreas-blattmann-479038186/?originalSubdomain=de">Andreas Blattmann</a>,
+        <a href="hhttps://timomilbich.github.io/">Timo Milbich</a>,
+        <a href="https://mdork.github.io/">Michael Dorkenwald</a>,
+        <a href="https://hci.iwr.uni-heidelberg.de/Staff/bommer">Bj&ouml;rn Ommer</a><br/>
+        <a href="https://www.iwr.uni-heidelberg.de/">Interdisciplinary Center for Scientific Computing, HCI, Heidelberg University</a><br/>
+
+        </p>
+                </section>
+
+             <section id="one" class="wrapper style1">
+          <div class="container 75%">
+        <b>tl;dr </b> We present a model to synthesize videos in a locally controlled but nonetheless stochastic stochastic manner only by poking a single pixel in a still image frame and enable human users to animate images with simple mouse drags.
+        <br>
+        <br>
+            <div class="row 200%">
+              <div style="width: 25%">
+                              <div class="container 25%">
+
+                    <div class="image fit captioned align-center"
+                                style="margin-bottom:0em; box-shadow:0 0">
+                      <a href="">
+                        <img src="images/paper.png" alt="" style="border:1px solid black"/>
+                      </a>
+                      <a href="">arXiv</a>
+                      <div class="headerDivider"></div>
+                      <a href="images/paper.bib">BibTeX</a>
+                      <div class="headerDivider"></div>
+                      <a href="https://github.com/CompVis/ipoke">GitHub</a>
+                      <br/>
+
+                                  </div>
+                              </div>
+              </div>
+              <div style="text-align: justify; margin-left: 10%; width: 65%">
+                            <h1>Abstract</h1>
+                  <p>How would a static scene react to a local poke? What are the effects on other parts of an object if you could locally push it? There will be distinctive movement, despite evident variations caused by the stochastic nature of our world. These outcomes are governed by the characteristic kinematics of objects that dictate their overall motion caused by a local interaction. Conversely, the movement of an object provides crucial information about its underlying distinctive kinematics and the interdependencies between its parts. This two-way relation motivates learning a bijective mapping between object kinematics and plausible future image sequences. Therefore, we propose iPOKE -- invertible Prediction of Object Kinematics -- that, conditioned on an initial frame and a local poke, allows to sample object kinematics and establishes a one-to-one correspondence to the corresponding plausible videos, thereby providing a controlled stochastic video synthesis. In contrast to previous works, we do not generate arbitrary realistic videos, but provide efficient control of movements, while still capturing the stochastic nature of our environment and the diversity of plausible outcomes it entails. Moreover, our approach can transfer kinematics onto novel object instances and is not confined to particular object classes.
+                  </p>
+              </div>
+            </div>
+          </div>
+
+
+
+
+            </section>
+
+
+
+                    <section id="three" class="wrapper style2 special">
+          <div class="container">
+            <header class="major">
+              <h2>Enabling Users to Interact with still images</h2>
+                <br>
+             </header>
+
+
+
+<header class="minor">
+<h2> We present a Graphical User Interface to directly enable human users to test our model and interact with still images as visualized below.
+    <a href="https://github.com/CompVis/ipoke#graphical-user-interface"><p style="color:red">Check it out now!</p></a>
+ </h2>
+</header>
+
+<div class="row 250%">
+<div class="6u 12u$(xsmall)">
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/B3-GUI_Demo_2.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Results from our GUI. If you also want to check it out, just clone <a href="https://github.com/CompVis/ipoke">our code</a> and follow the instructions there!
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/B3-GUI_Demo_1.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Results from our GUI. If you also want to check it out, just clone <a href="https://github.com/CompVis/ipoke">our code</a> and follow the instructions there!
+</div>
+</div>
+</div>
+
+
+</div>
+</section>
+
+			<!-- Two -->
+				<section id="two" class="wrapper style2 special">
+					<div class="container">
+						<header class="major">
+							<h2>Approach</h2>
+                            <br><h3>Invertible Model for Controlled Stochastic Video Synthesis</h3>
+						</header>
+
+                        <div class="container 75%">
+                    <div class="image fit captioned align-left"
+                                style="margin-bottom:2em; box-shadow:0 0;
+                                text-align:justify">
+                      <img src="images/model_figure1.png" alt="" style="border:0px solid black"/>
+
+                    </div>
+                            Overview of our proposed framework iPOKE for controlled video synthesis: We apply a conditional bijective transformation \(\tau_{\theta}\) to learn a residual kinematics representation \(r\) capturing all video information not present in the user control \(c\) defining intended local object motion in an image frame \(x_0\) (orange path). To retain feasible computational complexity, we pre-train a video autoencoding framework \((E, GRU, D)\) (blue path) yielding a dedicated video representation \(z\) as training input for \(\tau_\theta\). Controlled video synthesis is achieved by sampling a residual \(r\), thus inferring plausible motion for the remaining object parts not defined in \(c\), and generating video sequences \(\hat{\boldsymbol{X}}\) from the resulting \(z = \tau_{\theta}(r \vert x_0,c)\) using \(GRU\) and \(D\) (black path).
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+<section id="four" class="wrapper style2 special">
+    <p class="container">
+        <header class="major">
+            <h2>Results on the Object Classes of Humans and Plants</h2>
+        </header>
+        <header class="minor">
+<h2> Plants </h2>
+</header>
+
+<div class="row 250%">
+<div class="6u 12u$(xsmall)">
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/A1.1-Samples_PP.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Controlled stochastic video synthesis on the PokingPlants [1] dataset. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/A1.2-Samples_Iper.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Controlled stochastic video synthesis on the Iper dataset [2]. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+</div>
+</div>
+</div>
+
+
+<div class="row 250%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/A1.3-Samples_Human36m.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Controlled stochastic video synthesis on the Human3.6m dataset [3]. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/A1.4-Samples_TaiChi.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Controlled stochastic video synthesis on the Tai-Chi-HD dataset [4]. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+</div>
+</div>
+</div>
+
+<header class="minor">
+<h2>Further Results</h2>
+</header>
+
+<p>
+    Kinematics Transfer and Control Sensitivity
+</p>
+
+<div class="row 250%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/A2-Kinematics_Transfer_Iper.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Motion Transfer on iPER: We extract the residual kinematics from a ground truth sequence (top row) and use it together with the corresponding control \(c\) (red arrow) to animate an image \(x_t\) showing similar initial object posture (second row). We also visualize a random sample from \(q(r)\) for the same \((x_t,c)\) (bottom row), indicating that the residual kinematics representation solely contains motion information not present in \((x_t,c)\).
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/A3-Control_Sensitivity_Iper_.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Evaluating the sensitivity of our model to the different poke vectors at the same pixel on the iPER dataset. For a given poke location in an image \(x_0\), we randomly sample four poke magnitudes and directions and visualize the resulting synthesized sequences in the rows of this video.
+</div>
+</div>
+</div>
+
+<p>
+    User Input
+</p>
+
+<div class="row 250%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/B2-Human_Control_Iper.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Comparing different user inputs for the same image on the Iper dataset.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/B1-Human_Control_PP.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Comparing different user inputs for the same image on the PlokingPlants dataset.
+</div>
+</div>
+</div>
+
+<header class="minor">
+<h2>Understanding Object Structure</h2>
+</header>
+
+
+<div class="row 250%">
+<div class="12u$ 12u$(xsmall)">
+<div class="image fit captioned align-just">
+<!--<a href="images/object_structure.png">-->
+<img src="images/body_part.png" alt="" />
+Understanding object structure: By performing 100 random interactions at the same location \(l\) within a given image frame \(x_0\) we obtain varying video sequences, from which we compute motion correlations for \(l\) with all remaining pixels. By mapping these correlations to the pixel space, we visualize distinct object parts.
+</div>
+</div>
+</div>
+
+   <header class="minor">
+<h2>Comparison with other models</h2>
+</header>
+        <p>
+            Stochastic Video Synthesis: We compare with the recent state of the art in stochastic video prediction and obtain results obtaining higher visual and temporal fidelity as well as more diversity
+</p>
+
+<div class="row 250%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/C2.2-Cmp_IVRNN_Iper.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Besides the quantitative results presented in our <a href="">paper</a>, we qualititatively compare iPOKE to IVRNN [5], which is the best performing competing method when considering both diversity and video quality. Here we show the results on the iPER dataset [2].
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/C2.1-Cmp_IVRNN_PP.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Besides the quantitative results presented in our <a href="">paper</a>, we qualititatively compare iPOKE to IVRNN [5], which is the best performing competing method when considering both diversity and video quality. Here we show the results on the PokingPlants dataset [1].
+</div>
+</div>
+</div>
+
+        <p>
+Controlled Video Synthesis: We compare with the controlled video synthesis baseline of Hao et al. [6] which is the closest related work to our model in controlled video synthesis. iPOKE performs clearly better in terms of controllability and while synthesizing videos with superior visual and temporal coherence . </p>
+
+<div class="row 250%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/C1.2-Cmp_Hao_Iper.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Comparison in controlled video synthesis with the approach of Hao et al. [6] on the iPER dataset.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<div class="videocontainer">
+<video controls class="videothing">
+<source src="images/C1.1-Cmp_Hao_PP.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+Comparison in controlled video synthesis with the approach of Hao et al. [6] on the  PlokingPlants dataset.
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+        <!-- related works ! -->
+
+<section id="related" class="wrapper style1 special">
+
+<div class="container 75%">
+<div class="row 250%">
+<div class="12u">
+<h2>References </h2>
+<div class="12u">
+  <p align="justify" style="line-height: 1.0em; font-size:0.8em">
+[1] Andreas Blattmann, Timo Milbich, Michael Dorkenwald, and Bjorn Ommer. Understanding object dynamics for interactive image-to-video synthesis. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 5171–5181, 2021.
+<br/>
+[2] Wen Liu, Zhixin Piao, Jie Min, Wenhan Luo, Lin Ma, and Shenghua Gao. Liquid warping gan: A unified framework for human motion imitation, appearance transfer and novel view synthesis. In Proceedings of the IEEE/CVF International Conference on
+Computer Vision (ICCV), 2019.
+<br/>
+[3] Catalin Ionescu, Dragos Papava, Vlad Olaru, and Cristian Sminchisescu. Human3.6m: Large scale datasets and predictive methods for 3d human sensing in natural environments. IEEE Transactions on Pattern Analysis and Machine Intelligence, 36(7): 1325–1339, 2014.
+<br/>
+[4] Aliaksandr Siarohin, Stéphane Lathuiliére, Sergey Tulyakov, Elisa Ricci, and Nicu Sebe. First order motion model for image animation. In Adv. Neural Inform. Process. Syst., pages 7135–7145, 2019.
+<br/>
+[5] L. Castrejon, N. Ballas, and A. Courville. Improved conditional vrnns for video prediction. In 2019 IEEE/CVF International
+Conference on Computer Vision (ICCV), 2019.
+<br/>
+[6] Zekun Hao, Xun Huang, and Serge Belongie. Controllable video generation with sparse trajectories.  In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2018.
+</div>
+</div>
+</div>
+</div>
+</section>
+
+			<!-- Six -->
+				<section id="six" class="wrapper style3 special"
+          style="background-attachment:scroll;background-position:center bottom;">
+					<div class="container">
+						<header class="major">
+							<h2>Acknowledgement</h2>
+              <p>
+              	The research leading to these results is funded by the German Federal Ministry for Economic Affairs and Energy within the project “KI-Absicherung – Safe AI for automated driving” and by the German Research Foundation (DFG) within project 421703927.
+              This page is based on a design by <a href="http://templated.co">TEMPLATED</a>.
+              </p>
+						</header>
+					</div>
+				</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
