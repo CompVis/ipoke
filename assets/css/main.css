@@ -2335,6 +2335,12 @@
 			top: 0.25em;
 		}
 
+		.image.centered {
+			float: right;
+			padding: 0 1.5em 1em 1.5em;
+			top: 0.25em;
+		}
+
 		.image.fit {
 			display: block;
 			margin: 0 0 2em 0;

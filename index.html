@@ -44,10 +44,25 @@
                 </section>
 
              <section id="one" class="wrapper style1">
+
           <div class="container 75%">
-        <b>tl;dr </b> We present a model to synthesize videos in a locally controlled but nonetheless stochastic stochastic manner only by poking a single pixel in a still image frame and enable human users to animate images with simple mouse drags.
-        <br>
-        <br>
+
+
+<!--        <b>tl;dr </b>-->
+<!--              We present <b>iPOKE</b>, a model for locally controlled, stochastic video synthesis by poking a single pixel in a static scene, that enables users to animate still images only with simple mouse drags.-->
+<!--        <br>-->
+<!--        <br>-->
+
+         <div class="image centered captioned align-just"
+                                style="margin-bottom:2em; box-shadow:0 0;
+                                text-align:justify">
+                      <img src="images/fpp_final.png" alt="" style="border:0px solid black"/>
+                      <strong>TL;DR:</strong>
+             We present <em>iPOKE</em>, a model for locally controlled, stochastic video synthesis based on poking a single pixel in a static scene, that enables users to animate still images only with simple mouse drags.
+                    </div>
+
+
+
             <div class="row 200%">
               <div style="width: 25%">
                               <div class="container 25%">
@@ -152,12 +167,12 @@ Results from our GUI. If you also want to check it out, just clone <a href="http
 
 
 <section id="four" class="wrapper style2 special">
-    <p class="container">
+<div class="container 85%">
         <header class="major">
             <h2>Results on the Object Classes of Humans and Plants</h2>
         </header>
         <header class="minor">
-<h2> Plants </h2>
+<h2> Controlled Stochastic Video Synthesis </h2>
 </header>
 
 <div class="row 250%">
@@ -169,7 +184,7 @@ Results from our GUI. If you also want to check it out, just clone <a href="http
 Your browser does not support the video tag.
 </video>
 </div>
-Controlled stochastic video synthesis on the PokingPlants [1] dataset. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+    <b>Controlled stochastic video synthesis on PokingPlants [1].</b> Each rows show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
 </div>
 </div>
 <div class="6u$ 12u$(xsmall)">
@@ -181,7 +196,7 @@ Controlled stochastic video synthesis on the PokingPlants [1] dataset. Each row 
 Your browser does not support the video tag.
 </video>
 </div>
-Controlled stochastic video synthesis on the Iper dataset [2]. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+    <b>Controlled stochastic video synthesis on iPER[2].</b> Each row shows different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
 </div>
 </div>
 </div>
@@ -197,7 +212,7 @@ Controlled stochastic video synthesis on the Iper dataset [2]. Each row show dif
 Your browser does not support the video tag.
 </video>
 </div>
-Controlled stochastic video synthesis on the Human3.6m dataset [3]. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+    <b>Controlled stochastic video synthesis on Human3.6m [3].</b> Each row shows different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
 </div>
 </div>
 <div class="6u$ 12u$(xsmall)">
@@ -209,7 +224,7 @@ Controlled stochastic video synthesis on the Human3.6m dataset [3]. Each row sho
 Your browser does not support the video tag.
 </video>
 </div>
-Controlled stochastic video synthesis on the Tai-Chi-HD dataset [4]. Each row show different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
+    <b>Controlled stochastic video synthesis on Tai-Chi-HD [4].</b> Each row shows different samples from our learned residual kinematics distribution for the same poke, indicating our model to be capable of stochastically synthesize motion which can while maintaining localized control.
 </div>
 </div>
 </div>
@@ -219,7 +234,7 @@ Controlled stochastic video synthesis on the Tai-Chi-HD dataset [4]. Each row sh
 </header>
 
 <p>
-    Kinematics Transfer and Control Sensitivity
+    <b>Kinematics Transfer and Control Sensitivity</b>
 </p>
 
 <div class="row 250%">
@@ -232,7 +247,7 @@ Controlled stochastic video synthesis on the Tai-Chi-HD dataset [4]. Each row sh
 Your browser does not support the video tag.
 </video>
 </div>
-Motion Transfer on iPER: We extract the residual kinematics from a ground truth sequence (top row) and use it together with the corresponding control \(c\) (red arrow) to animate an image \(x_t\) showing similar initial object posture (second row). We also visualize a random sample from \(q(r)\) for the same \((x_t,c)\) (bottom row), indicating that the residual kinematics representation solely contains motion information not present in \((x_t,c)\).
+    <b>Kinematics Transfer on iPER:</b> We extract the residual kinematics from a ground truth sequence (top row) and use it together with the corresponding control \(c\) (red arrow) to animate an image \(x_t\) showing similar initial object posture (second row). We also visualize a random sample from \(q(r)\) for the same \((x_t,c)\) (bottom row), indicating that the residual kinematics representation solely contains motion information not present in \((x_t,c)\).
 </div>
 </div>
 <div class="6u$ 12u$(xsmall)">
@@ -244,13 +259,13 @@ Motion Transfer on iPER: We extract the residual kinematics from a ground truth 
 Your browser does not support the video tag.
 </video>
 </div>
-Evaluating the sensitivity of our model to the different poke vectors at the same pixel on the iPER dataset. For a given poke location in an image \(x_0\), we randomly sample four poke magnitudes and directions and visualize the resulting synthesized sequences in the rows of this video.
+<b>Control Sensitivity:</b> Evaluating the sensitivity of our model to the different poke vectors at the same pixel on iPER [2]. For a given poke location in an image \(x_0\), we randomly sample four poke magnitudes and directions and visualize the resulting synthesized sequences in the rows of this video.
 </div>
 </div>
 </div>
 
 <p>
-    User Input
+    <b>Additional vidualized results from real user input</b>
 </p>
 
 <div class="row 250%">
@@ -263,7 +278,7 @@ Evaluating the sensitivity of our model to the different poke vectors at the sam
 Your browser does not support the video tag.
 </video>
 </div>
-Comparing different user inputs for the same image on the Iper dataset.
+Comparing different user inputs for the same source image on iPER [2].
 </div>
 </div>
 <div class="6u$ 12u$(xsmall)">
@@ -275,7 +290,7 @@ Comparing different user inputs for the same image on the Iper dataset.
 Your browser does not support the video tag.
 </video>
 </div>
-Comparing different user inputs for the same image on the PlokingPlants dataset.
+Comparing different user inputs for the same source image on PlokingPlants [1].
 </div>
 </div>
 </div>
@@ -290,7 +305,7 @@ Comparing different user inputs for the same image on the PlokingPlants dataset.
 <div class="image fit captioned align-just">
 <!--<a href="images/object_structure.png">-->
 <img src="images/body_part.png" alt="" />
-Understanding object structure: By performing 100 random interactions at the same location \(l\) within a given image frame \(x_0\) we obtain varying video sequences, from which we compute motion correlations for \(l\) with all remaining pixels. By mapping these correlations to the pixel space, we visualize distinct object parts.
+    <b>Understanding object structure:</b> By performing 100 random interactions at the same location \(l\) within a given image frame \(x_0\) we obtain varying video sequences, from which we compute motion correlations for \(l\) with all remaining pixels. By mapping these correlations to the pixel space, we visualize distinct object parts.
 </div>
 </div>
 </div>
@@ -299,7 +314,7 @@ Understanding object structure: By performing 100 random interactions at the sam
 <h2>Comparison with other models</h2>
 </header>
         <p>
-            Stochastic Video Synthesis: We compare with the recent state of the art in stochastic video prediction and obtain results obtaining higher visual and temporal fidelity as well as more diversity
+            <b>Stochastic Video Synthesis:</b> We compare with the recent state of the art in stochastic video prediction and obtain results obtaining higher visual and temporal fidelity as well as more diversity
 </p>
 
 <div class="row 250%">
@@ -312,7 +327,7 @@ Understanding object structure: By performing 100 random interactions at the sam
 Your browser does not support the video tag.
 </video>
 </div>
-Besides the quantitative results presented in our <a href="">paper</a>, we qualititatively compare iPOKE to IVRNN [5], which is the best performing competing method when considering both diversity and video quality. Here we show the results on the iPER dataset [2].
+Besides the quantitative results presented in our <a href="">paper</a>, we qualititatively compare iPOKE to IVRNN [5], which is the best performing competing method when considering both diversity and video quality. Here we show the results on iPER [2].
 </div>
 </div>
 <div class="6u$ 12u$(xsmall)">
@@ -324,13 +339,13 @@ Besides the quantitative results presented in our <a href="">paper</a>, we quali
 Your browser does not support the video tag.
 </video>
 </div>
-Besides the quantitative results presented in our <a href="">paper</a>, we qualititatively compare iPOKE to IVRNN [5], which is the best performing competing method when considering both diversity and video quality. Here we show the results on the PokingPlants dataset [1].
+Besides the quantitative results presented in our <a href="">paper</a>, we qualititatively compare iPOKE to IVRNN [5], which is the best performing competing method when considering both diversity and video quality. Here we show the results on PokingPlants [1].
 </div>
 </div>
 </div>
 
         <p>
-Controlled Video Synthesis: We compare with the controlled video synthesis baseline of Hao et al. [6] which is the closest related work to our model in controlled video synthesis. iPOKE performs clearly better in terms of controllability and while synthesizing videos with superior visual and temporal coherence . </p>
+            <b>Controlled Video Synthesis:</b> We compare with the controlled video synthesis baseline of Hao et al. [6] which is the closest related work to our model in controlled video synthesis. iPOKE performs clearly better in terms of controllability and while synthesizing videos with superior visual and temporal coherence . </p>
 
 <div class="row 250%">
 <div class="6u 12u$(xsmall)">
@@ -342,7 +357,7 @@ Controlled Video Synthesis: We compare with the controlled video synthesis basel
 Your browser does not support the video tag.
 </video>
 </div>
-Comparison in controlled video synthesis with the approach of Hao et al. [6] on the iPER dataset.
+Comparison in controlled video synthesis with the approach of Hao et al. [6] on iPER.
 </div>
 </div>
 <div class="6u$ 12u$(xsmall)">
@@ -354,7 +369,7 @@ Comparison in controlled video synthesis with the approach of Hao et al. [6] on 
 Your browser does not support the video tag.
 </video>
 </div>
-Comparison in controlled video synthesis with the approach of Hao et al. [6] on the  PlokingPlants dataset.
+Comparison in controlled video synthesis with the approach of Hao et al. [6] on PlokingPlants.
 </div>
 </div>
 </div>
@@ -391,19 +406,146 @@ Conference on Computer Vision (ICCV), 2019.
 </div>
 </section>
 
-			<!-- Six -->
-				<section id="six" class="wrapper style3 special"
-          style="background-attachment:scroll;background-position:center bottom;">
-					<div class="container">
-						<header class="major">
-							<h2>Acknowledgement</h2>
-              <p>
-              	The research leading to these results is funded by the German Federal Ministry for Economic Affairs and Energy within the project “KI-Absicherung – Safe AI for automated driving” and by the German Research Foundation (DFG) within project 421703927.
-              This page is based on a design by <a href="http://templated.co">TEMPLATED</a>.
-              </p>
-						</header>
-					</div>
-				</section>
+
+<section id="other_work" class="wrapper style1 special">
+
+<div class="container 85%">
+<div class="row 250%">
+<div class="12u">
+<h2> Our Related work on video synthesis</h2>
+</div>
+
+<div class="12u">
+<h6>
+<a href="https://compvis.github.io/interactive-image2video-synthesis/">
+ Understanding Object Dynamics for Interactive Image-To-Video Synthesis
+</a>
+</h6>
+</div>
+<div class="3u 12u$(medium)">
+<div class="image fit align-center">
+<a href="https://compvis.github.io/interactive-image2video-synthesis/">
+<img src="https://compvis.github.io/interactive-image2video-synthesis/images/first-page.png" style="max-width:25em; margin:auto" />
+</a>
+</div>
+</div>
+<div class="9u 12u$(medium)">
+<p align="justify" style="line-height: 1.0em; font-size:0.9em">
+What would be the effect of locally poking a static scene? We present an approach that learns naturally-looking global articulations caused by a local manipulation at a pixel level. Training requires only videos of moving objects but no information of the underlying manipulation of the physical scene. Our generative model learns to infer natural object dynamics as a response to user interaction and learns about the interrelations between different object body regions. Given a static image of an object and a local poking of a pixel, the approach then predicts how the object would deform over time. In contrast to existing work on video prediction, we do not synthesize arbitrary realistic videos but enable local interactive control of the deformation. Our model is not restricted to particular object categories and can transfer dynamics onto novel unseen object instances. Extensive experiments on diverse objects demonstrate the effectiveness of our approach compared to common video prediction frameworks.
+</div>
+
+
+<div class="12u">
+<h6>
+<a href="https://github.com/CompVis/image2video-synthesis-using-cINNs">
+ Stochastic Image-To-Video Synthesis using cINNs
+</a>
+</h6>
+</div>
+<div class="3u 12u$(medium)">
+<div class="image fit align-center">
+<a href="https://compvis.github.io/image2video-synthesis-using-cINNs/">
+<img src="https://compvis.github.io/image2video-synthesis-using-cINNs/paper/method.png" style="max-width:25em; margin:auto" />
+</a>
+</div>
+</div>
+<div class="9u 12u$(medium)">
+<p align="justify" style="line-height: 1.0em; font-size:0.9em">
+Video understanding calls for a model to learn the characteristic interplay between static scene content and its dynamics: Given an image, the model must be able to predict a future progression of the portrayed scene and, conversely, a video should be explained in terms of its static image content and all the remaining characteristics not present in the initial frame. This naturally suggests a bijective mapping between the video domain and the static content as well as residual information. In contrast to common stochastic image-to-video synthesis, such a model does not merely generate arbitrary videos progressing the initial image. Given this image, it rather provides a one-to-one mapping between the residual vectors and the video with stochastic outcomes when sampling. The approach is naturally implemented using a conditional invertible neural network (cINN) that can explain videos by independently modelling static and other video characteristics, thus laying the basis for controlled video synthesis. Experiments on diverse video datasets demonstrate the effectiveness of our approach in terms of both the quality and diversity of the synthesized results.
+</div>
+
+
+
+
+<div class="12u">
+<h6>
+<a href="https://compvis.github.io/behavior-driven-video-synthesis/">
+Behavior-Driven Synthesis of Human Dynamics
+</a>
+</h6>
+</div>
+<div class="3u 12u$(medium)">
+<div class="image fit align-center">
+<a href="https://compvis.github.io/behavior-driven-video-synthesis/">
+<img src="https://compvis.github.io/behavior-driven-video-synthesis/images/first-page.png" style="max-width:25em; margin:auto" />
+</a>
+</div>
+</div>
+<div class="9u 12u$(medium)">
+<p align="justify" style="line-height: 1.0em; font-size:0.9em">
+Generating and representing human behavior are of major importance for various computer vision applications. Commonly, human video synthesis represents behavior as sequences of postures while directly predicting their likely progressions or merely changing the appearance of the depicted persons, thus not being able to exercise control over their actual behavior during the synthesis process. In contrast, controlled behavior synthesis and transfer across individuals requires a deep understanding of body dynamics and calls for a representation of behavior that is independent of appearance and also of specific postures. In this work, we present a model for human behavior synthesis which learns a dedicated representation of human dynamics independent of postures. Using this representation, we are able to change the behavior of a person depicted in an arbitrary posture, or to even directly transfer behavior observed in a given video sequence. To this end, we propose a conditional variational framework which explicitly disentangles posture from behavior. We demonstrate the effectiveness of our approach on this novel task, evaluating capturing, transferring, and sampling fine-grained, diverse behavior, both quantitatively and qualitatively.
+<!-- Insert here interactive video synthesis work from andy -->
+</div>
+
+
+</div>
+
+
+<!-- <section id="five" class="wrapper style1"> -->
+<div class="container 85%">
+<div class="row 250%">
+<div class="12u">
+<h2> Our Related work on visual synthesis</h2>
+</div>
+
+<div class="12u">
+<h6>
+<a href="https://compvis.github.io/taming-transformers/">
+ Taming Transformers for High-Resolution Image Synthesis
+</a>
+</h6>
+</div>
+<div class="3u 12u$(medium)">
+<div class="image fit align-center">
+<a href="https://compvis.github.io/taming-transformers/">
+<img src="https://compvis.github.io/taming-transformers/paper/teaser.png" style="max-width:25em; margin:auto" />
+</a>
+</div>
+</div>
+<div class="9u 12u$(medium)">
+<p align="justify" style="line-height: 1.0em; font-size:0.9em">
+Designed to learn long-range interactions on sequential data, transformers continue to show state-of-the-art results on a wide variety of tasks. In contrast to CNNs, they contain no inductive bias that prioritizes local interactions. This makes them expressive, but also computationally infeasible for long sequences, such as high-resolution images. We demonstrate how combining the effectiveness of the inductive bias of CNNs with the expressivity of transformers enables them to model and thereby synthesize high-resolution images. We show how to (i) use CNNs to learn a context-rich vocabulary of image constituents, and in turn (ii) utilize transformers to efficiently model their composition within high-resolution images. Our approach is readily applied to conditional synthesis tasks, where both non-spatial information, such as object classes, and spatial information, such as segmentations, can control the generated image. In particular, we present the first results on semantically-guided synthesis of megapixel images with transformers.
+<!-- Insert here interactive video synthesis work from andy -->
+</div>
+
+<div class="12u">
+<h6>
+<a href="https://compvis.github.io/net2net/">
+  Network-to-Network Translation with Conditional Invertible Neural Networks
+</a>
+</h6>
+</div>
+<div class="3u 12u$(medium)">
+<div class="image fit align-center">
+<a href="https://compvis.github.io/net2net/">
+<img src="https://compvis.github.io/net2net/paper/teaser.png" style="max-width:25em; margin:auto" />
+</a>
+</div>
+</div>
+<div class="9u 12u$(medium)">
+<p align="justify" style="line-height: 1.0em; font-size:0.9em">
+Given the ever-increasing computational costs of modern machine learning models, we need to find new ways to reuse such expert models and thus tap into the resources that have been invested in their creation. Recent work suggests that the power of these massive models is captured by the representations they learn. Therefore, we seek a model that can relate between different existing representations and propose to solve this task with a conditionally invertible network. This network demonstrates its capability by (i) providing generic transfer between diverse domains, (ii) enabling controlled content synthesis by allowing modification in other domains, and (iii) facilitating diagnosis of existing representations by translating them into interpretable domains such as images. Our domain transfer network can translate between fixed representations without having to learn or finetune them. This allows users to utilize various existing domain-specific expert models from the literature that had been trained with extensive computational resources. Experiments on diverse conditional image synthesis tasks, competitive image modification results and experiments on image-to-image and text-to-image generation demonstrate the generic applicability of our approach. For example, we translate between BERT and BigGAN, state-of-the-art text and image models to provide text-to-image generation, which neither of both experts can perform on their own.
+</div>
+</div>
+</div>
+</div>
+<!-- <section id="six" class="wrapper style1"> -->
+
+</section>
+
+<!-- Six -->
+<section id="six" class="wrapper style3 special"
+style="background-attachment:scroll;background-position:center bottom;">
+<div class="container">
+<header class="major">
+<h2>Acknowledgement</h2>
+<p>
+The research leading to these results is funded by the German Federal Ministry for Economic Affairs and Energy within the project “KI-Absicherung – Safe AI for automated driving” and by the German Research Foundation (DFG) within project 421703927.
+This page is based on a design by <a href="http://templated.co">TEMPLATED</a>.
+</p>
+</header>
+</div>
+</section>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
