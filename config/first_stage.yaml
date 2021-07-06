@@ -1,0 +1,99 @@
+general:
+  experiment: first_stage
+  profiler: False
+  debug: False
+  base_dir: "logs"
+  seed: 42
+
+data:
+  dataset: IperDataset # supported datasets are IperDataset, PlantDataset, Human3.6mDataset and TaichiDataset
+  poke_size: 1 # not important for the first stage
+  max_frames: 10 # the number of frames to predict
+  batch_size: 20
+  n_workers: 20 # data loading workers
+  yield_videos: True # leave as is
+  spatial_size: !!python/tuple [128,128] # spatial video size
+  # data augmentation
+  augment: True
+  p_col: .8
+  p_geom: .8
+  augment_b: 0.4
+  augment_c: 0.5
+  augment_h: 0.15
+  augment_s: 0.4
+  aug_deg: 15
+  aug_trans: !!python/tuple [0.1,0.1]
+  split: official # see in the file data/flow_dataset.py
+  filter_flow: False
+  n_pokes: 1 # no important for first stage
+  zero_poke: True # whether or not to train with simulated zero pokes to force the model to learn foreground background separation
+  zero_poke_amount: 12 #frequency, when zero pokes occur in the training (the amount of zeropokes per epoch is 1 / zero_poke_amount
+  filter: action # some datasets have special filter procedures, see data/flow_dataset.py
+
+training:
+  lr: 0.0002
+  weight_decay: 0.00001
+  min_acc_batch_size: 3
+  max_batches_per_epoch: 2000
+  max_val_batches: 200
+  profiler: Falshe
+  n_epochs: 1000
+  w_kl: 0.0000001
+  w_l1: 10
+  w_vgg: 10
+  val_every: 1000
+  gamma: 0.98
+  vgg_1: False
+  full_sequence: True
+
+
+architecture:
+  ENC_M_channels: [64, 128, 256, 256, 256] # for models with for spatial video size 64x64 remove last entry
+  decoder_factor: 32
+  z_dim: 32 # number of channels for the video representation on which the invertible model will be trained later on
+  norm: 'group'
+  CN_content: 'spade'
+  CN_motion: 'ADAIN'
+  spectral_norm: True
+  running_stats: False
+  n_gru_layers: 4 # number of hidden layers in the latent GRU
+  dec_channels: [256,256,256,128,64] # for models with for spatial video size 64x64 remove first entry
+  min_spatial_size: 8
+  motion_bias: True
+  deterministic: False
+
+d_t:
+  use: True
+  patch_temp_disc: False
+  gp_weight: 1.
+  fmap_weight: 1.
+  gen_weight: 1.
+  bce_loss: False
+  num_classes: 1
+  pretrain: 0
+  max_frames: 12
+  gp_1: False
+
+d_s:
+  use: True
+  bce_loss: False
+  gp_weight: 0.
+  fmap_weight: 1.
+  pretrain: 0
+  n_examples: 16
+  gen_weight: 1.
+  gp_1: False
+
+logging:
+  n_val_img_batches: 4
+  log_train_prog_at: 300
+  n_saved_ckpt: 5
+  n_samples_fvd: 1000
+  bs_i3d: 8
+  n_logged_img: 8
+
+testing:
+  n_samples_fvd: 1000
+  # for diversity measure
+  n_samples_per_data_point: 50
+  test_batch_size: 16

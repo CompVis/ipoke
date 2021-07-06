@@ -1,0 +1,148 @@
+architecture:
+  activation: elu
+  attention: false
+  augment_channels: 32
+  augmented_input: false
+  cond_conv: false
+  cond_conv_hidden_channels: 256
+  condition_nice: false
+  coupling_type: conv
+  factor: 16
+  factors:
+  - 4
+  - 8
+  flow_attn_heads: 4
+  flow_mid_channels_factor: 64
+  kernel_size:
+  - 2
+  - 3
+  levels:
+  - - 15
+    - 10
+    - 5
+  - - 15
+    - 12
+    - 10
+    - 8
+    - 6
+    - 4
+    - 2
+  multistack: false
+  n_blocks: 2
+  n_flows: 20
+  num_steps:
+  - 10
+  - 5
+  - 5
+  - 4
+  - 4
+  - 4
+  - 3
+  - 3
+  - 3
+  - 2
+  - 2
+  - 2
+  - 1
+  - 1
+  - 1
+  p_dropout: 0.0
+  prior_transform: affine
+  reshape: none
+  scale: false
+  scale_augmentation: true
+  shift_augmentation: true
+  transform: affine
+conditioner:
+  name: iper-ss128-bn64
+  use: true
+data:
+  aug_deg: 15
+  aug_trans: !!python/tuple
+  - 0.1
+  - 0.1
+  augment_b: 0.4
+  augment_c: 0.5
+  augment_h: 0.15
+  augment_s: 0.4
+  augment_wo_dis: true
+  batch_size: 40
+  dataset: IperDataset
+  filter: all
+  flow_weights: false
+  max_frames: 10
+  n_pokes: 5
+  n_workers: 26
+  normalize_flows: false
+  object_weighting: false
+  p_col: 0.8
+  p_geom: 0.8
+  poke_size: 5
+  scale_poke_to_res: true
+  spatial_size: !!python/tuple
+  - 128
+  - 128
+  split: official
+  val_obj_weighting: false
+  yield_videos: true
+  zero_poke: true
+  zero_poke_amount: 12
+first_stage:
+  name: iper-ss128-bn32-mf10-complex
+general:
+  base_dir: logs
+  debug: false
+  experiment: second_stage
+  profiler: false
+  seed: 42
+logging:
+  log_train_prog_at: 200
+  n_fvd_samples: 1000
+  n_log_images: 8
+  n_samples: 4
+  n_samples_umap: 1000
+  n_saved_ckpt: 5
+  n_val_img_batches: 3
+poke_embedder:
+  name: iper-ss128-bn64-endpoint10f-np5
+  use: true
+testing:
+  debug: false
+  div_kp: false
+  n_samples_fvd: 1000
+  n_samples_metrics: 1000
+  n_samples_per_data_point: 100
+  n_samples_vis: 100
+  n_test_pokes: 1
+  seed: 31
+  summarize_n_pokes: true
+  test_batch_size: 10
+  verbose: true
+training:
+  clip_grad_norm: 0.0
+  custom_lr_decrease: true
+  full_seq: true
+  lr: 0.001
+  lr_scaling: true
+  lr_scaling_max_it: 500
+  max_batches_per_epoch: 2000
+  max_val_batches: 100
+  min_acc_batch_size: 3
+  mixed_prec: false
+  n_epochs: 100
+  spatial_mean: false
+  use_adabelief: false
+  use_logp_loss: false
+  val_every: 0.5
+  weight_decay: 1.0e-05
+ui:
+  debug: false
+  display_size: 256
+  fixed_length: true
+  fixed_seed: false
+  fps: 5
+  ids: []
+  interactive: false
+  n_gt_pokes: 5
+  model_name: iper-16_10d1-bs96-lr1e-3-bn32-fmcf64-fullseq-ss128-mf10-endpoint-np5-complex
+  save_fps: 3

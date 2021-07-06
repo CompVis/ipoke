@@ -1,0 +1,136 @@
+general:
+  experiment: second_stage
+  profiler: False
+  debug: False
+  base_dir: "logs"
+  seed: 42
+
+# name of the pretrained first stage model (video autoencoding framework), the pretrained models are listed in the respective dictionary in models/pretrained_models.py .
+# When having trained your own model, you can add it under a new key and specifiy its model name and the path to the checkpoint which shall be used
+first_stage:
+  name: iper-ss128-bn32-mf10-complex
+
+# name of the pretrained image encoder model (\phi_{x_0} in the paper), the pretrained models are listed in the respective dictionary in models/pretrained_models.py .
+# When having trained your own model, you can add it under a new key and specifiy its model name and the path to the checkpoint which shall be used
+conditioner:
+  use: True
+  name: iper-ss128-bn64
+
+# name of the pretrained poke embedder model (\phi_{c} in the paper), the pretrained models are listed in the respective dictionary in models/pretrained_models.py.
+# When having trained your own model, you can add it under a new key and specifiy its model name and the path to the checkpoint which shall be used
+poke_embedder:
+  use: True
+  name: iper-ss128-bn64-endpoint10f-np5
+  #
+
+data:
+  dataset: IperDataset # supported datasets are IperDataset, PlantDataset, Human3.6mDataset and TaichiDataset
+  # a window will be used for the poke with from (x-poke_size/2:x+poke_size/2,y-poke_size/2:y+poke_size/2) where (x,y) is the poked location.
+  #All the values therein will be initialized with the respective pixel shift value
+  poke_size: 5
+  max_frames: 10 # number of predicted frames
+  batch_size: 40
+  n_workers: 26
+  yield_videos: True # leave as is
+  spatial_size: !!python/tuple [128,128] # spatial video resolution
+  # data augmentation
+  augment: True
+  p_col: 0.8
+  p_geom: 0.8
+  augment_b: 0.4
+  augment_c: 0.5
+  augment_h: 0.15
+  augment_s: 0.4
+  aug_deg: 15
+  aug_trans: !!python/tuple [0.1,0.1]
+  split: official # see in the file data/flow_dataset.py
+  n_pokes: 5 # the maximum number of pokes for a given training example. The actual number will be randomly chosen from within [1,n_pokes]
+  zero_poke: True # whether or not to train with simulated zero pokes to force the model to learn foreground background separation
+  zero_poke_amount: 12 #frequency, when zero pokes occur in the training (the amount of zeropokes per epoch is 1 / zero_poke_amount
+  scale_poke_to_res: True # whether or not to scale the flow magnitudes according to the spatial downsampling of the videos
+  filter: all # some datasets have special filter procedures, see data/flow_dataset.py
+
+architecture:
+  attention: False
+  n_blocks: 2
+  flow_mid_channels_factor: 64
+  flow_attn_heads: 4
+  kernel_size: [2,3]
+  coupling_type: "conv"
+  scale: False
+  n_flows: 20
+  num_steps: [10,5,5,4,4,4,3,3,3,2,2,2,1,1,1]
+  factor: 16
+  levels: [[15,10, 5], [15, 12, 10, 8, 6, 4, 2]]
+  factors: [4,8]
+  activation: "elu"
+  transform: "affine"
+  prior_transform: "affine"
+  condition_nice: False
+  augmented_input: False
+  augment_channels: 32
+  scale_augmentation: True
+  shift_augmentation: True
+  multistack: False
+  cond_conv: False
+  cond_conv_hidden_channels: 256
+  reshape: none
+  p_dropout: 0.
+
+testing:
+  n_samples_fvd: 1000
+  # for diversity measure
+  n_samples_per_data_point: 5
+  test_batch_size: 20
+  n_samples_vis: 100
+  n_samples_metrics: 1000
+  verbose: True
+  debug: False
+  div_kp: False
+  summarize_n_pokes: False
+  n_test_pokes: 1
+  seed: 42
+  n_control_sensitivity_pokes: 32
+
+
+training:
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  min_acc_batch_size: 3
+  max_batches_per_epoch: 2000
+  max_val_batches: 100
+  use_logp_loss: False
+  n_epochs: 100
+  val_every: .5
+  clip_grad_norm: 0.
+  lr_scaling: True
+  lr_scaling_max_it: 500
+  custom_lr_decrease: True
+  mixed_prec: False
+  full_seq: True
+  spatial_mean: False
+  use_adabelief: False
+#  logdet_weight: .5
+
+
+logging:
+  n_val_img_batches: 3
+  log_train_prog_at: 200
+  n_saved_ckpt: 5
+  n_log_images: 8
+  n_samples: 4
+  n_samples_umap: 1000
+  n_fvd_samples: 1000
+
+
+ui:
+  display_size: 256
+  debug: False
+  fixed_length: True
+  #seq_length_to_generate: 10
+  fps: 5
+  save_fps: 3
+  fixed_seed: False
+  interactive: False
+  ids: []
+  n_gt_pokes: 5

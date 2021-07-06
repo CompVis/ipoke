@@ -1,0 +1,6 @@
+[submodule "models/flownet2"]
+	path = models/flownet2
+	url = https://github.com/NVIDIA/flownet2-pytorch
+[submodule "models/pose_estimator"]
+	path = models/pose_estimator
+	url = git@github.com:ablattmann/pose_estimation_hrnet.git

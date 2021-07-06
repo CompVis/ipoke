@@ -1,0 +1,118 @@
+general:
+  experiment: first_stage
+  #model_name: taichi-pokevae-ss64-bs16-mf10-mfdt12-bn32-wkl0.1-np1-stackpokemotion
+  # h36m-pokevae-ss64-bs16-mf10-mfdt12-bn64-wkl0.1-np1-stackpokemotion
+  # taichi-pokevae-ss64-bs16-mf10-mfdt12-bn32-wkl0.1-np1-stackpokemotion
+  # plants-pokevae-ss64-bs16-mf10-mfdt12-bn64-wkl0.1-np1-stackpokemotion
+  # iper-pokevae-ss64-bs16-mf10-mfdt12-bn32-wkl0.1-np5-stackpokemotion
+  #taichi-pokevae-ss128-bs20-mf10-mfdt12-bn32-wkl0.1-np5 -stackpokemotion #h36m-motion_model-ss128-bs14-mf16-mfdt12-lessgp-spade_model-bn64 #plants-motion_model-ss128-bs14-mf16-mfdt12-lessgp-spade_model-bn64
+  profiler: False
+  debug: False
+  base_dir: "logs"
+  seed: 42
+
+data:
+  dataset: TaichiDataset
+  poke_size: 5
+#  valid_lags: 1
+  #subsample_step: 2
+  max_frames: 10
+  batch_size: 20
+  n_workers: 20
+  yield_videos: True
+  spatial_size: !!python/tuple [128,128]
+  p_col: .8
+  p_geom: .8
+  augment_b: 0.4
+  augment_c: 0.5
+  augment_h: 0.15
+  augment_s: 0.4
+  aug_deg: 15 # for iper use 0, for plants use 30°]
+  # translation is (vertical, horizontal)
+  aug_trans: !!python/tuple [0.1,0.1]
+  split: official
+  flow_weights: False
+  filter_flow: False
+  augment : True
+  n_pokes: 5
+  normalize_flows: False
+  zero_poke: True
+  zero_poke_amount: 12
+  scale_poke_to_res: True
+
+testing:
+  n_samples_fvd: 1000
+  # for diversity measure
+  n_samples_per_data_point: 5
+  test_batch_size: 25
+  n_samples_vis: 200
+  n_samples_metrics: 1000
+  verbose: True
+  debug: False
+  div_kp: False
+  summarize_n_pokes: True
+
+
+
+training:
+  lr: 0.0002
+  weight_decay: 0.00001
+  min_acc_batch_size: 3
+  max_batches_per_epoch: 2000
+  max_val_batches: 200
+  profiler: False
+  n_epochs: 1000
+  w_kl: .1 #0.0000001
+  w_l1: 10
+  w_vgg: 10
+  val_every: 1000
+  gamma: 0.98
+  vgg_1: False
+  full_sequence: True
+  kl_annealing: 5
+
+
+architecture:
+  baseline: True
+  ENC_M_channels: [64, 128, 256, 256, 256]
+  decoder_factor: 64
+  z_dim: 32
+  norm: 'group'
+  CN_content: 'spade'
+  CN_motion: 'ADAIN'
+  spectral_norm: True
+  running_stats: False
+  n_gru_layers: 4
+  dec_channels: [256,256,256,128,64]
+  min_spatial_size: 8
+  stack_motion_and_poke: True
+
+d_t:
+  use: True
+  patch_temp_disc: False
+  gp_weight: 1.
+  fmap_weight: 1.
+  gen_weight: 1.
+  bce_loss: False
+  num_classes: 1
+  pretrain: 0
+  max_frames: 12
+  gp_1: False
+
+d_s:
+  use: True
+  bce_loss: False
+  gp_weight: 0.
+  fmap_weight: 1.
+  pretrain: 0
+  n_examples: 16
+  gen_weight: 1.
+  gp_1: False
+
+logging:
+  n_val_img_batches: 4
+  log_train_prog_at: 300
+  n_saved_ckpt: 5
+  n_samples_fvd: 1000
+  bs_i3d: 8
+  n_logged_img: 8

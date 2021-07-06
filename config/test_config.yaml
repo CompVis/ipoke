@@ -1,0 +1,46 @@
+general:
+  experiment: dummy
+  model_name: test
+
+
+poke_coords: False
+max_samples: 100
+fix_seed: True
+n_logged: 6
+gpu: 5
+n_exmpls_pose_metric: 15
+nn_computation: False
+
+training:
+  lr: 0.0001
+
+data:
+  dataset: IperDataset
+  poke_size: 5
+#  subsample_step: 1
+  max_frames: 10
+  batch_size: 6
+  n_workers: 20
+  yield_videos: True
+  spatial_size: !!python/tuple [128,128]
+  p_col: 0.8
+  p_geom: 0.8
+  augment_b: 0.4
+  augment_c: 0.5
+  augment_h: 0.15
+  augment_s: 0.4
+  aug_deg: 15 # for iper use 0, for plants use 30°
+  # translation is (vertical, horizontal)
+  aug_trans: !!python/tuple [0.1,0.1]
+  split: official
+  flow_weights: False
+  augment_wo_dis: True
+  n_pokes: 1
+  zero_poke: False
+  zero_poke_amount: 8
+  normalize_flows: False
+  object_weighting: False
+
+
+
+

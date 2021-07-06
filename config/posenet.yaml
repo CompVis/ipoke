@@ -1,0 +1,41 @@
+
+
+MODEL:
+  NAME: 'pose_resnet'
+  PRETRAINED: 'models/pytorch/imagenet/resnet152-b121ed2d.pth'
+  IMAGE_SIZE:
+  - 256
+  - 256
+  HEATMAP_SIZE:
+  - 64
+  - 64
+  SIGMA: 2
+  NUM_JOINTS: 16
+  TARGET_TYPE: 'gaussian'
+  EXTRA:
+    FINAL_CONV_KERNEL: 1
+    DECONV_WITH_BIAS: false
+    NUM_DECONV_LAYERS: 3
+    NUM_DECONV_FILTERS:
+    - 256
+    - 256
+    - 256
+    NUM_DECONV_KERNELS:
+    - 4
+    - 4
+    - 4
+    NUM_LAYERS: 152
+
+TEST:
+  BATCH_SIZE_PER_GPU: 128
+  COCO_BBOX_FILE: 'data/coco/person_detection_results/COCO_val2017_detections_AP_H_56_person.json'
+  BBOX_THRE: 1.0
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  MODEL_FILE: ''
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  FLIP_TEST: true
+  POST_PROCESS: true
+  SHIFT_HEATMAP: true
+  USE_GT_BBOX: true

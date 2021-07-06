@@ -1,0 +1,5 @@
+.idea/
+__pycache__/
+data/test_data/
+train_f.py
+**/.ipynb_checkpoints

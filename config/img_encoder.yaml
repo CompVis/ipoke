@@ -1,0 +1,66 @@
+general:
+  experiment: img_encoder
+  #model_name: taichi-conv-64-bs128-n_cn64-gp1 #sharedmodel-aug-test-bigae-256-dis-logvar-bs96-moreaug
+  profiler: False
+  debug: False
+  base_dir: "logs"
+  seed: 42
+
+data:
+  dataset: TaichiDataset
+  poke_size: 1
+  subsample_step: 10
+  max_frames: 1
+  batch_size: 128
+  n_workers: 20
+  yield_videos: False
+  spatial_size: !!python/tuple [64,64]
+  p_col: .8
+  p_geom: .8
+  augment_b: 0.4
+  augment_c: 0.5
+  augment_h: 0.15
+  augment_s: 0.4
+  aug_deg: 15 # for iper use 0, for plants use 30°
+  # translation is (vertical, horizontal)
+  aug_trans: !!python/tuple [0.1,0.1]
+  split: official
+  flow_weights: False
+  filter_flow: False
+  augment: True
+  n_pokes: 1
+  # only for faster data loading
+  normalize_flows: True
+
+
+training:
+  lr: 2.0e-4
+  weight_decay: 0
+  min_acc_batch_size: 3
+#  max_batches_per_epoch: 2000
+  max_val_batches: 200
+  profiler: True
+  n_epochs: 20
+  pretrain: 2
+  w_kl: 1.0e-6
+  val_every: 1.
+  forward_sample: True
+  gp_weight: 1.
+
+
+architecture:
+  conv: True
+  nf_in: 3
+  nf_max: 64
+  min_spatial_size: 8
+  deterministic: True
+
+
+logging:
+  n_val_img_batches: 4
+  log_train_prog_at: 300
+  n_saved_ckpt: 5
+  n_log_images: 8
+
+testing:
+  seed: 42

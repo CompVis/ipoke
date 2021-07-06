@@ -1,0 +1,72 @@
+general:
+  experiment: poke_encoder
+  #model_name: h36m-conv-64-bs128-n_cn8x8x64-endpoint10frames-flow_ae #sharedmodel-aug-test-bigae-256-dis-logvar-bs96-moreaug
+  profiler: False
+  debug: False
+  base_dir: "logs"
+  seed: 42
+
+data:
+  dataset: Human36mDataset
+  poke_size: 5
+  #subsample_step: 2
+  max_frames: 10
+  batch_size: 64
+  n_workers: 20
+  yield_videos: False
+  spatial_size: !!python/tuple [128,128]
+  p_col: 0.8
+  p_geom: 0.8
+  augment_b: 0.4
+  augment_c: 0.5
+  augment_h: 0.15
+  augment_s: 0.4
+  aug_deg: 15 # for iper use 0, for plants use 30°
+  # translation is (vertical, horizontal)
+  aug_trans: !!python/tuple [0.1,0.1]
+  split: official
+  flow_weights: False
+  augment: True
+  n_pokes: 5
+  scale_poke_to_res: True
+  zero_poke_amount: 12
+  zero_poke: True
+  normalize_flows: False
+  #valid_lags: 0
+
+
+training:
+  lr: 0.001
+  weight_decay: 0
+  min_acc_batch_size: 3
+  max_batches_per_epoch: 2000
+  max_val_batches: 200
+  profiler: False
+  n_epochs: 20
+  w_kl: 1
+  val_every: 1.
+  forward_sample: True
+
+testing:
+  n_samples_fvd: 1000
+  # for diversity measure
+  n_samples_per_data_point: 50
+  test_batch_size: 16
+
+
+architecture:
+  conv: True
+  nf_in: 2
+  nf_max: 64
+  min_spatial_size: 8
+  deterministic: True
+  flow_ae: True
+  poke_and_image: False
+
+
+logging:
+  n_val_img_batches: 4
+  log_train_prog_at: 300
+  n_saved_ckpt: 5
+  n_log_images: 8
+
