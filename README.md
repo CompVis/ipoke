@@ -16,7 +16,7 @@
 <img src="images/fpp_final.png" title="Overview over our model."> 
 </p>
 
-## [**Arxiv**]() | [**Project page**](https://compvis.github.io/ipoke/) | [**BibTeX**]()
+## [**Arxiv**](https://arxiv.org/pdf/2107.02790.pdf) | [**Project page**](https://compvis.github.io/ipoke/) | [**BibTeX**](#bibtex)
 
 ## Table of contents ##
 1. [Requirements](#requirements)
@@ -220,9 +220,9 @@ where `TEST_MODE` should be in `[fvd, accuracy, diversity, kps_acc]`. The models
 | <TEST_MODE>  | Experiment | Comment | 
 |----------|----------|----------|
 | `fvd` | Compute FVD scores | if you encounter `tensorflow` errors due to missing libraries add `LD_LIBRARY_PATH=/usr/local/<LOCAL_CUDA_VERSION>/targets/x86_64-linux/lib/` before the above command. (Tested under Ubuntu 20.04 LTS)| 
-| `accuracy` | Calculate accuracy scores `[LPIPS, SSIM, PSNR]` | as explained in the [paper](), results are printed to console and are also saved to `logs/second_stage/generated/<MODEL_NAME>/metrics/` for the respective model| 
-| `diversity` | Calculate diversity scores based on `[LPIPS, MSE]` | as explained in the [paper]() , results are printed to console and are also saved to `logs/second_stage/generated/<MODEL_NAME>/metrics/` for the respective model | 
-| `kps_acc` | Targeted keypoint accuracy only for the poked body parts | For a detailed explanation, see Fig. 8 and the respective section in the [paper](); Only supported for the models trained on the iPER dataset.  | 
+| `accuracy` | Calculate accuracy scores `[LPIPS, SSIM, PSNR]` | as explained in the [paper](https://arxiv.org/pdf/2107.02790.pdf), results are printed to console and are also saved to `logs/second_stage/generated/<MODEL_NAME>/metrics/` for the respective model| 
+| `diversity` | Calculate diversity scores based on `[LPIPS, MSE]` | as explained in the [paper](https://arxiv.org/pdf/2107.02790.pdf) , results are printed to console and are also saved to `logs/second_stage/generated/<MODEL_NAME>/metrics/` for the respective model | 
+| `kps_acc` | Targeted keypoint accuracy only for the poked body parts | For a detailed explanation, see Fig. 8 and the respective section in the [paper](https://arxiv.org/pdf/2107.02790.pdf); Only supported for the models trained on the iPER dataset.  | 
 
 If you only want to calculate the metrics only for one of our models or if you want to test [your own one](#train-your-own-models), run 
 
@@ -300,5 +300,12 @@ Thanks to everyone who makes their code and models available. In particular,
 ## BibTeX
 
 ```
-
+@misc{blattmann2021ipoke,
+      title={iPOKE: Poking a Still Image for Controlled Stochastic Video Synthesis}, 
+      author={Andreas Blattmann and Timo Milbich and Michael Dorkenwald and Björn Ommer},
+      year={2021},
+      eprint={2107.02790},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
