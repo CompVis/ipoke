@@ -4,7 +4,7 @@ Official Pytorch Implementation of the paper [iPOKE: Poking a Still Image for Co
 
 
 
-## [**Arxiv**]() | [**Project page**](https://compvis.github.io/ipoke/) | [**BibTeX**]()
+## [**Arxiv**](https://arxiv.org/abs/2107.02790) | [**Project page**](https://compvis.github.io/ipoke/) | [**BibTeX**]()
 
 [Andreas Blattmann](https://www.linkedin.com/in/andreas-blattmann-479038186/?originalSubdomain=de),
 [Timo Milbich](https://timomilbich.github.io/),
