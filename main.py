@@ -29,6 +29,8 @@ def load_parameters(config_name, restart, model_name):
         else:
             raise FileNotFoundError("No saved config file found but model is intended to be restarted. Aborting....")
 
+        [makedirs(dir_structure[d]) for d in dir_structure if not path.isdir(dir_structure[d])]
+
         cdict['testing'] = cdict_old['testing']
         cdict['general']['model_name'] = model_name
 
@@ -78,7 +80,7 @@ if __name__ == '__main__':
     parser.add_argument("-c", "--config", type=str,
                         default="config/latent_flow_net.yaml",
                         help="Define config file")
-    parser.add_argument("-m","--model_name", type=str, default='' ,help="Run name for the project that shall be resumed for training or testing.")
+    parser.add_argument("-m","--model_name", type=str, required=True,help="Run name for the project that shall be resumed for training or testing.")
     parser.add_argument("-r","--resume", default=False ,action="store_true", help='Whether or not to resume the training.')
     parser.add_argument("-g","--gpus",default=[0], type=int,
                         nargs="+",help="GPU to use.")

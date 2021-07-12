@@ -48,10 +48,10 @@ class Experiment:
 
         # wandb logging
         self.current_version = 0
-        if path.isdir(path.join(self.dirs["log"],"wandb")):
-            runs = glob(path.join(self.dirs["log"],"wandb","run-*"))
+        if path.isdir(path.join(self.dirs["ckpt"])):
+            runs = glob(path.join(self.dirs["ckpt"],"*"))
             if len(runs) > 0:
-                self.current_version = max([int(r.split("-")[-1]) for r in runs])
+                self.current_version = max([int(r.split("/")[-1]) for r in runs])
                 if self.config["general"]["test"] == 'none':
                     self.current_version+=1
 
@@ -139,7 +139,7 @@ class Experiment:
                 raise ValueError(f'No valid files contained in ckpt-name-holding file "{ckpt_name}"')
 
         ckpt_file_name = ckpt_name.split('/')[-1]
-        print(f'********************* Loading checkpoint of run_version #{self.current_version} with name "{ckpt_file_name}" *******************************')
+        print(f'********************* Loading checkpoint for run_version #{self.current_version} with name "{ckpt_file_name}" *******************************')
         return ckpt_name
 
     def add_ckpt_file(self):
@@ -157,7 +157,7 @@ class Experiment:
                 ckpt_dir = act_dir if path.isfile(path.join(act_dir,"last.ckpt")) else None
                 print('Using last ckpt...')
             else:
-                ckpt_dir = act_dir if path.isfile(path.join(act_dir,"best_k_models.yaml")) and len(glob(path.join(act_dir,"*.ckpt"))) -1 > 0 else None
+                ckpt_dir = act_dir if (path.isfile(path.join(act_dir,"best_k_models.yaml")) and len(glob(path.join(act_dir,"*.ckpt"))) > 0) else None
 
             if ckpt_dir is not None:
                 break
