@@ -39,7 +39,7 @@ conda activate ipoke
 
 ## Pretrained models 
 
-To you can find all pretrained models [here](https://hci.iwr.uni-heidelberg.de/compvis_files/ipoke.zip). Download and extract the `zip`-file in a `<LOGDIR>` and create a symbolic link to the created repository which is name `ipoke` via
+To you can find all pretrained models [here](https://hci.iwr.uni-heidelberg.de/compvis_files/ipoke.zip). Download and extract the `zip`-file in a `<LOGDIR>` and create a symbolic link to the created repository which is named `ipoke` via
 ```shell script
 ln -s <LOGDIR>/ipoke logs
 ``` 
