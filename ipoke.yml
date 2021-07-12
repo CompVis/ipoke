@@ -33,7 +33,7 @@ dependencies:
     - jupyter-core
     - kornia
     - lpips
-    - moviepy
+    - moviepy==1.0.0
     - natsort
     - opencv-python==4.2.0.34
     - opt-einsum
