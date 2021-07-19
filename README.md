@@ -19,15 +19,21 @@
 ## [**Arxiv**](https://arxiv.org/pdf/2107.02790.pdf) | [**Project page**](https://compvis.github.io/ipoke/) | [**BibTeX**](#bibtex)
 
 ## Table of contents ##
-1. [Requirements](#requirements)
-2. [Pretrained models](#pretrained-models)
-3. [Graphical User Interface](#graphical-user-interface)
-4. [Generating samples](#generating-samples)
-5. [Data preparation](#data-preparation)
-6. [Evaluation](#evaluation)
-7. [Train your own models](#train-your-own-models)
-8. [Shout-outs](#shout-outs)
-9. [BibTeX](#bibtex)
+1. [News](#news)
+2. [Requirements](#requirements)
+3. [Pretrained models](#pretrained-models)
+4. [Graphical User Interface](#graphical-user-interface)
+5. [Generating samples](#generating-samples)
+6. [Data preparation](#data-preparation)
+7. [Evaluation](#evaluation)
+8. [Train your own models](#train-your-own-models)
+9. [Shout-outs](#shout-outs)
+10. [BibTeX](#bibtex)
+
+## News
+
+* We added a [quickstart colab GUI-demo](https://colab.research.google.com/drive/1sec1I_80SpG6ielaSE0n_AcI3cEKzk0l?usp=sharing) based on [`ngrok`](https://ngrok.com/) and [`streamlit`](https://streamlit.io/) for users without own hardware.
+
 
 ## Requirements 
 A suitable conda environment named ``ipoke`` can be created with
