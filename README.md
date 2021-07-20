@@ -281,7 +281,7 @@ As for our video autoencoding framework, you cann add your final trained model t
 To train a new poke encoder, run the following command
 
 ```shell script
-python -W ignore main.py --config config/img_encoder.yaml --gpus <GPU> --m[PyTorch FID](https://github.com/mseitzer/pytorch-fid)odel_name <MODEL_NAME>
+python -W ignore main.py --config config/img_encoder.yaml --gpus <GPU> --model_name <MODEL_NAME>
 ```
 
 As for our video autoencoding framework, you cann add your final trained model to the respective `conditioner`-dict in `models/pretrained_models.py`.
