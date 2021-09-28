@@ -175,7 +175,7 @@ To extract the individual frames and estimate optical flow set the value of the 
 
 ````shell script
 source activate_data_proc
-python -m utils.prepare_dataset --config config/data_preparation/plants.yaml
+python -m data.prepare_dataset --config config/data_preparation/plants.yaml
 ````
 By defining the number of parallel runs of flownet2, which will be distributed among the gpus with the ids specified in ``target_gpus``, with the ``num_workers``-argument, you can significantly speed up the optical flow estimation.  
 ### iPER ###
@@ -184,7 +184,7 @@ Download the zipped videos in ```iPER_1024_video_release.zip``` from [this websi
 website (note that you have to create a microsoft account to get access) and extract the archive to a ```<TARGETDIR>``` similar to the above example. There, you'll also find the ``train.txt`` and ``val.txt``. Download these files and save them in the ``<TARGETDIR>`` 
 Again, set the undefined value of the field ``raw_dir`` in ``config/data_preparation/iper.yaml`` to be ``<TARGETDIR>``, define the target location for the extracted frames and the optical flow via ``processed_dir`` and run 
 ```shell script
-python -m utils.prepare_dataset --config config/data_preparation/iper.yaml
+python -m data.prepare_dataset --config config/data_preparation/iper.yaml
 ``` 
 with the ````flownet2```` environment activated. 
 
